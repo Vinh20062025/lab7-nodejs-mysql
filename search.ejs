@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm kiếm bài viết</title>
+</head>
+<body>
+  <p>
+    <a href="/">Trang chủ</a> |
+    <a href="/news">Danh sách tin tức</a>
+  </p>
+
+  <h1>Tìm kiếm bài viết</h1>
+
+  <form action="/search" method="GET">
+    <input
+      type="text"
+      name="keyword"
+      placeholder="Nhập từ khóa..."
+      value="<%= keyword || '' %>"
+    >
+    <button type="submit">Tìm kiếm</button>
+  </form>
+
+  <% if (keyword) { %>
+    <h3>Bạn đang tìm kiếm tin tức về: <%= keyword %></h3>
+
+    <% if (newsList.length > 0) { %>
+      <h2>Danh sách tin tức</h2>
+
+      <% newsList.forEach((item) => { %>
+        <p>
+          <a href="/news/<%= item.id %>">
+            <%= item.title %>
+          </a>
+        </p>
+      <% }) %>
+
+    <% } else { %>
+      <h2>Không tìm thấy bài viết</h2>
+    <% } %>
+  <% } %>
+</body>
+</html>

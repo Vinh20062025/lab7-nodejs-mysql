@@ -1,0 +1,13 @@
+{
+  "name": "news-api",
+  "version": "1.0.0",
+  "description": "Lab 7 - Node.js thuần với MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "mysql2": "^3.14.4"
+  }
+}

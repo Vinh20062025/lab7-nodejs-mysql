@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tin tức</title>
+</head>
+<body>
+  <p>
+    <a href="/">Trang chủ</a> |
+    <a href="/about">Giới thiệu</a> |
+    <a href="/create">Thêm bài viết mới</a>
+  </p>
+
+  <% if (id && newsList.length > 0) { %>
+    <h3>Bạn đang xem tin tức số <%= id %></h3>
+
+    <p>
+      <a href="/edit?id=<%= newsList[0].id %>">Sửa bài viết</a> |
+      <a href="/delete?id=<%= newsList[0].id %>"
+         onclick="return confirm('Bạn có chắc muốn xóa bài viết này?')">
+        Xóa
+      </a>
+    </p>
+
+    <h1><%= newsList[0].title %></h1>
+    <p><%= newsList[0].description %></p>
+
+    <p><a href="/news">Quay lại danh sách</a></p>
+
+  <% } else if (newsList.length > 0) { %>
+
+    <h1>Danh sách tin tức</h1>
+
+    <% newsList.forEach((item) => { %>
+      <div>
+        <h3>
+          <a href="/news/<%= item.id %>">
+            <%= item.title %>
+          </a>
+        </h3>
+
+        <p><%= item.description %></p>
+
+        <a href="/edit?id=<%= item.id %>">Sửa</a> |
+        <a href="/delete?id=<%= item.id %>"
+           onclick="return confirm('Bạn có chắc muốn xóa bài viết này?')">
+          Xóa
+        </a>
+      </div>
+      <hr>
+    <% }) %>
+
+  <% } else { %>
+
+    <h1>Không tìm thấy bài viết</h1>
+
+  <% } %>
+</body>
+</html>
